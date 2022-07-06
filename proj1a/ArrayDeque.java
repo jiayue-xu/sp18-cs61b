@@ -10,7 +10,7 @@ public class ArrayDeque<T>{
         first = last = size = 0;
     }
 
-    public void resize(int cap){
+    private void resize(int cap){
         T it[] = (T[]) new Object[cap];
         if(first >= last){
             System.arraycopy(item, first, it, 0, item.length - first);
@@ -45,7 +45,7 @@ public class ArrayDeque<T>{
         return size == 0;
     }
 
-    public boolean isFull(){
+    private boolean isFull(){
         return size == item.length;
     }
 
@@ -63,7 +63,7 @@ public class ArrayDeque<T>{
         }
     }
 
-    public boolean isRatioValid(){
+    private boolean isRatioValid(){
         if(item.length >= 16 && (1.0 * size / item.length) < 0.25){
             return false;
         }else{
