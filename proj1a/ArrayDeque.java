@@ -1,16 +1,16 @@
-public class ArrayDeque<T>{
+public class ArrayDeque<T> {
 
     private T[] item;
     private int first;
     private int last;
     private int size;
 
-    public ArrayDeque(){
+    public ArrayDeque() {
         item = (T[]) new Object[8];
         first = last = size = 0;
     }
 
-    private void resize(int cap){
+    private void resize(int cap) {
         T it[] = (T[]) new Object[cap];
         if(first >= last){
             System.arraycopy(item, first, it, 0, item.length - first);
@@ -23,7 +23,7 @@ public class ArrayDeque<T>{
         last = size;
     }
 
-    public void addFirst(T it){
+    public void addFirst(T it) {
         if(isFull()){
             resize(size * 2);
         }
@@ -32,7 +32,7 @@ public class ArrayDeque<T>{
         size = size + 1;
     }
 
-    public void addLast(T it){
+    public void addLast(T it) {
         if(isFull()){
             resize(size * 2);
         }
@@ -53,7 +53,7 @@ public class ArrayDeque<T>{
         return size;
     }
 
-    public void printDeque(){
+    public void printDeque() {
         if(!isEmpty()){
             int pos = first;
             do{
@@ -63,7 +63,7 @@ public class ArrayDeque<T>{
         }
     }
 
-    private boolean isRatioValid(){
+    private boolean isRatioValid() {
         if(item.length >= 16 && (1.0 * size / item.length) < 0.25){
             return false;
         }else{
@@ -71,7 +71,7 @@ public class ArrayDeque<T>{
         }
     }
 
-    public T removeFirst(){
+    public T removeFirst() {
         if(isEmpty()) return null;
         if(!isRatioValid()){
             resize(size * 2);
@@ -83,7 +83,7 @@ public class ArrayDeque<T>{
         return it;
     }
 
-    public T removeLast(){
+    public T removeLast() {
         if(isEmpty()) return null;
         if(!isRatioValid()){
             resize(size * 2);
@@ -97,7 +97,7 @@ public class ArrayDeque<T>{
     }
 
     public T get(int index){
-        if(index > size - 1 || index < 0){
+        if(index > size - 1 || index < 0) {
             return null;
         }
         int getPos = (first + index) % item.length;
