@@ -7,6 +7,13 @@ public class LinkedListDeque<T>{
         public DequeNode(T item){
             Item = item;
         }
+
+        public T getRecursive(int index){
+            if(index == 0){
+                return Item;
+            }
+            return next.getRecursive(index - 1);
+        }
     }
 
     private DequeNode sentinel;
@@ -90,5 +97,12 @@ public class LinkedListDeque<T>{
             }
         }
         return null;
+    }
+
+    public T getRecursive(int index){
+        if(index > size - 1 || index < 0 || sentinel.next == null){
+            return null;
+        }
+        return sentinel.next.getRecursive(index);
     }
 }
